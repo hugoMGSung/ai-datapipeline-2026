@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품목록</title>
+</head>
+<body>
+    <h1 id="title">상품목록</h1>
+
+    <input id="keyword" type="text" placeholder="검색어 입력" value="">
+    <button id="search-btn">검색</button>
+
+    <div class="product">
+        <span class="name">키보드</span>
+        <span class="price">30000</span>
+    </div>
+
+    <div class="product">
+        <span class="name">마우스</span>
+        <span class="price">15000</span>
+    </div>
+
+    <div class="product">
+        <span class="name">모니터</span>
+        <span class="price">250000</span>
+    </div>
+
+    <script>
+        const searchBtn = document.getElementById("search-btn");
+
+        searchBtn.addEventListener("click", () => {
+            const keyword = document.getElementById("keyword").value;
+
+            alert(keyword + "을(를) 검색합니다.");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>동적 상품 목록</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .product { border: 1px solid #ddd; padding: 10px; margin: 8px; }
+        .name { font-weight: bold; }
+        .price { color: blue; }
+    </style>
+</head>
+<body>
+    <h1 id="title">동적 상품 목록</h1>
+
+    <input id="keyword" type="text" placeholder="상품명 검색">
+    <button id="search-btn" onclick="searchProducts()">검색</button>
+    <button id="more-btn" onclick="loadMore()">더보기</button>
+
+    <div id="result"></div>
+
+    <script>
+        const products = [
+            { name: "키보드", category: "주변기기", price: 30000 },
+            { name: "마우스", category: "주변기기", price: 15000 },
+            { name: "모니터", category: "디스플레이", price: 250000 },
+            { name: "USB", category: "저장장치", price: 12000 },
+            { name: "노트북", category: "컴퓨터", price: 1200000 },
+            { name: "SSD", category: "저장장치", price: 90000 }
+        ];
+
+        let visibleCount = 3;
+        let currentList = products;
+
+        function render() {
+            const result = document.getElementById("result");
+            result.innerHTML = "";
+
+            currentList.slice(0, visibleCount).forEach(product => {
+                const div = document.createElement("div");
+                div.className = "product";
+                div.innerHTML = `
+                    <span class="name">${product.name}</span>
+                    <span class="category">${product.category}</span>
+                    <span class="price">${product.price}</span>
+                `;
+                result.appendChild(div);
+            });
+        }
+
+        function searchProducts() {
+            const keyword = document.getElementById("keyword").value;
+            currentList = products.filter(product => product.name.includes(keyword));
+            visibleCount = 3;
+            setTimeout(render, 700);
+        }
+
+        function loadMore() {
+            visibleCount += 2;
+            setTimeout(render, 700);
+        }
+
+        render();
+    </script>
+</body>
+</html>
