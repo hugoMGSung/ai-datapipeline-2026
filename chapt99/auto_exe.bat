@@ -1,1 +1,1 @@
-python auto_log.py
+python total_scrap_nodb.py
