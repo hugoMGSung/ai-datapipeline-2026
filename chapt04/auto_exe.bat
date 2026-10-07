@@ -1,1 +1,1 @@
-python auto_log.py
+python.exe auto_log.py
